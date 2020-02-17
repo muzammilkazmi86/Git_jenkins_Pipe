@@ -35,7 +35,7 @@ pipeline {
 		    sh 'echo "Create kubernetes cluster..."'
 		    sh '''
 			eksctl create cluster \
-			--name Capstone_Udacity \
+			--name mcu \
 			--version 1.14 \
 			--region us-east-2 \
 			--nodegroup-name standard-workers \
