@@ -53,7 +53,7 @@ pipeline {
 	    steps {
 		withAWS(credentials: 'jenkins', region: 'us-east-2a') {
 		    sh 'echo "Configure kubectl..."'
-		    sh 'aws eks --region us-east-2 update-kubeconfig --name udacity' 
+		    sh 'aws eks --region us-east-2 update-kubeconfig --name mcu' 
 		}
 	    }
         }
