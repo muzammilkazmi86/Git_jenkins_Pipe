@@ -42,7 +42,7 @@ pipeline {
 			--node-type t2.micro \
 			--nodes 2 \
 			--nodes-min 1 \
-			--nodes-max 4 \
+			--nodes-max 3 \
 			--managed
 		'''
 		}
