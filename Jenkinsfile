@@ -44,6 +44,7 @@ pipeline {
 			--nodes-min 1 \
 			--nodes-max 3 \
 			--managed
+			--role-arn arn:aws:iam::322886847718:role/eks
 		'''
 		}
 	    }
