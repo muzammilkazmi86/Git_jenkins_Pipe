@@ -1,6 +1,18 @@
 # Capstone Udacity Project
 
-## Initialization of EC2 Instance
+## 1: Project Flow:
+1. Lauch a EC2 instance (Ubuntu).
+2. Go thru the initialization steps under Step 2.
+3. Make Install will trigger most of the dependency install.
+4. Configure EKSCTL.
+5. Install Jenkins by following Step 5.
+    Kubernetes
+Build pipeline
+Docker containers
+Kubernetes cluster
+
+
+## 2: Initialization of EC2 Instance
 1. Initialize an EC2 Ubuntu Instance which will act as a node to configure your project
 2. Inside the instance run the commands below to give the instance ability to load virtual environment.
     sudo apt-get update
@@ -16,14 +28,14 @@
 9. Run Make Install from the git cloned repo on the ec2 instance to download the pre-reqs. Before running Make Install, developers should clone this repository to their EC2 instance.
 
 
-## Configuring AWS CLI
+## 3: Configuring AWS CLI
 1. aws configure
     AWS Access Key ID [None]: EXMAMPLEKEYID
     AWS Secret Access Key [None]: EXAMPLEKEYACCESSID
     Default region name [None]: us-east-2
     Default output format [None]: text
 
-## Configure EKSCTL
+## 4: Configure EKSCTL
 1.  Configure eksctl as we will be using AWS Elastic Kubernetes Service:
 2. To install or upgrade eksctl on Linux using curl:
       Download and extract the latest release of eksctl with the following command.
@@ -33,7 +45,7 @@
 4. Test that your installation was successful with the following command.
       eksctl version
 
-## Install Jenkins:
+## 5: Install Jenkins:
 1. Commands below show a sample of how to install Jenkins:
     sudo apt-get update
     sudo apt install -y default-jdk
@@ -48,21 +60,21 @@
 4. Configure Docker credentials. Since we are using ID dockerhub, configure the credentials accordingly. (Ensure credentials plugin is installed in jenkins)
 5. Configure AWS credentials within Jenkins
 6. Configure blueocean to connect to Github. 
-## Lint Check:
+## 6: Lint Check:
 To verify linting, change the html code purposely and run the pipeline thru. Failure will look somewhat similar to the screenshot below:
 ![Linting check](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/verifylinting.png)
 
-## Pipeline result once the run is successful.
+## 7: Pipeline result once the run is successful.
 ![Successful pipeline](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/PIPELINEFINAL.png)
-## Sample log folder 
+## 8: Sample log folder 
 This folder shares logs from different steps in the pipeline. 
 
-## MCU Cluster deployment
+## 9 MCU Cluster deployment
 Below shows successful cluster deployment:
 ![Cloudformation Result](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/mcuclustercloudformation.png)
 ![Cluster Result](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/mcuclusterdeployment.png)
 
-## Bonus Tip (Checking your cluster from the EC2 Node running Jenkins):
+## 10 Bonus Tip (Checking your cluster from the EC2 Node running Jenkins):
 1. Create a kubectl configuration file in your ~/.kube directory as ~/.kube/config-eks:
     mkdir ~/.kube
     touch ~/.kube/config-eks
