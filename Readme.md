@@ -52,7 +52,7 @@
 # Pipeline result once the run is successful. (Image PIPELINEFINAL)
 
 # Sample log folder 
-## Shares logs from different steps:
+## This folder shares logs from different steps showing completion:
  1. 
  2. 
  3.
