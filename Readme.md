@@ -69,6 +69,11 @@ Below shows successful cluster deployment:
 2. Add the file to the $KUBECONFIG environment variable so that kubectl is able to find it:
     export KUBECONFIG=~/.kube/config-eks
 3. Fill the file with the following contents, replacing the placeholders shown as follows:
+    Replace API-SERVER-ENDPOINT: API server endpoint obtained from the cluster.
+    Replace CA-DATA: certificate authority data obtained from the cluster.
+    Replace CLUSTER-NAME: name of AWS EKS cluster.
+    Replace PROFILE-NAME: AWS credentials profile from the ~/.aws/credentials file (typically, default).
+
 ```sh
         apiVersion: v1
     clusters:
@@ -98,9 +103,5 @@ Below shows successful cluster deployment:
             - name: AWS_PROFILE
               value: "PROFILE-NAME"
 ```
-#### Replace API-SERVER-ENDPOINT: API server endpoint obtained from the cluster.
-#### Replace CA-DATA: certificate authority data obtained from the cluster.
-#### Replace CLUSTER-NAME: name of AWS EKS cluster.
-#### Replace PROFILE-NAME: AWS credentials profile from the ~/.aws/credentials file (typically, default).
 
 
