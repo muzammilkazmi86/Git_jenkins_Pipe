@@ -66,9 +66,7 @@ Below shows successful cluster deployment:
 1. Create a kubectl configuration file in your ~/.kube directory as ~/.kube/config-eks:
     mkdir ~/.kube
     touch ~/.kube/config-eks
-2. Add the file to the $KUBECONFIG environment variable so that kubectl is able to find it:
-    export KUBECONFIG=~/.kube/config-eks
-3. Fill the file with the following contents, replacing the placeholders shown as follows:
+2. Fill the file with the following contents, replacing the placeholders shown as follows:
      - Replace API-SERVER-ENDPOINT: API server endpoint obtained from the cluster.
      - Replace CA-DATA: certificate authority data obtained from the cluster.
      - Replace CLUSTER-NAME: name of AWS EKS cluster.
@@ -103,5 +101,6 @@ Below shows successful cluster deployment:
             - name: AWS_PROFILE
               value: "PROFILE-NAME"
 ```
-
-
+3. Add the file to the $KUBECONFIG environment variable so that kubectl is able to find it:
+    export KUBECONFIG=~/.kube/config-eks
+4. To check if you can successfully connect, run: kubectl get svc
