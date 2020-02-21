@@ -2,7 +2,7 @@
 
 ## Initialization of EC2 Instance
 1. Initialize an EC2 Ubuntu Instance which will act as a node to configure your project
-2. Inside the instance run the commands below to give the instance ability to load virtual environment:
+2. Inside the instance run the commands below to give the instance ability to load virtual environment.
     sudo apt-get update
     sudo apt-get upgrade
     sudo apt-get install python3-venv
@@ -13,7 +13,7 @@
 6. Activate virtual env: source venv/bin/activate
 7. Check which Python instance to make sure it is showing the venv: which python3
 8. Goto the directory where the project is stored
-9. Run Make Install from the git cloned repo on the ec2 instance to download the pre-reqs
+9. Run Make Install from the git cloned repo on the ec2 instance to download the pre-reqs. Before running Make Install, developers should clone this repository to their EC2 instance.
 
 
 ## Configuring AWS CLI
@@ -48,17 +48,17 @@
 4. Configure Docker credentials. Since we are using ID dockerhub, configure the credentials accordingly. (Ensure credentials plugin is installed in jenkins)
 5. Configure AWS credentials within Jenkins
 6. Configure blueocean to connect to Github. 
+## Checking if linting is working.
+![Linting check](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/verifylinting.png)
 
-# Pipeline result once the run is successful. (Image PIPELINEFINAL)
-![alt text](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/PIPELINEFINAL.png)
-# Sample log folder 
-## This folder shares logs from different steps showing completion:
- 1. 
- 2. 
- 3.
- 4. 
- 5.
- 6.
- 
- 
-# MCU Cluster deployment (mcuclusterdeployment imageE)
+## Pipeline result once the run is successful.
+![Successful pipeline](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/PIPELINEFINAL.png)
+## Sample log folder 
+This folder shares logs from different steps in the pipeline. 
+
+## MCU Cluster deployment
+Below shows successful cluster deployment:
+![Cloudformation Result](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/mcuclustercloudformation.png)
+![Cluster Result](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/mcuclusterdeployment.png)
+
+
