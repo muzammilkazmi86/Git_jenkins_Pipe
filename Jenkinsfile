@@ -31,13 +31,13 @@ pipeline {
 	    
 	stage('Create kubernetes cluster') {
 	    steps {
-		withAWS(credentials: 'aws-kubectl', region: 'us-west-2a') {
+		withAWS(credentials: 'aws-kubectl', region: 'us-east-2a') {
 		    sh 'echo "Create kubernetes cluster..."'
 		    sh '''
 			eksctl create cluster \
 			--name mcu \
 			--version 1.14 \
-			--region us-west-2 \
+			--region us-east-2 \
 			--nodegroup-name standard-workers \
 			--nodeImageId ami-080fbb09ee2d4d3fa \
 			--node-type t2.micro \
@@ -54,16 +54,16 @@ pipeline {
 	    
 	stage('Configure kubectl') {
 	    steps {
-		withAWS(credentials: 'aws-kubectl', region: 'us-west-2a') {
+		withAWS(credentials: 'aws-kubectl', region: 'us-east-2a') {
 		    sh 'echo "Configure kubectl..."'
-		    sh 'aws eks --region us-west-2 update-kubeconfig --name mcu' 
+		    sh 'aws eks --region us-east-2 update-kubeconfig --name mcu' 
 		}
 	    }
         }
 
 	stage('Deploy blue container') {
 	    steps {
-		withAWS(credentials: 'aws-kubectl', region: 'us-west-2a') {
+		withAWS(credentials: 'aws-kubectl', region: 'us-east-2a') {
 		    sh 'echo "Deploy blue container..."'
 		    sh 'kubectl apply -f ./Blue/blue.yaml'
 		}
@@ -72,7 +72,7 @@ pipeline {
 	    
 	stage('Deploy green container') {
 	    steps {
-		withAWS(credentials: 'aws-kubectl', region: 'us-west-2a') {
+		withAWS(credentials: 'aws-kubectl', region: 'us-east-2a') {
 		    sh 'echo "Deploy green container..."'
 		    sh 'kubectl apply -f ./Green/green.yaml'
 		}
@@ -81,7 +81,7 @@ pipeline {
 	    
 	stage('Create blue service') {
 	    steps {
-		withAWS(credentials: 'aws-kubectl', region: 'us-west-2a') {
+		withAWS(credentials: 'aws-kubectl', region: 'us-east-2a') {
 		    sh 'echo "Create blue service..."'
 		    sh 'kubectl apply -f ./Blue/blue_service.yaml'
 		}
@@ -90,7 +90,7 @@ pipeline {
 	    
 	stage('Update service to green') {
 	    steps {
-		withAWS(credentials: 'aws-kubectl', region: 'us-west-2a') {
+		withAWS(credentials: 'aws-kubectl', region: 'us-east-2a') {
 		    sh 'echo "Update service to green..."'
 		    sh 'kubectl apply -f ./Green/green_service.yaml'
 		}
