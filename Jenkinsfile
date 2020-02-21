@@ -36,13 +36,12 @@ pipeline {
 		    sh '''
 			eksctl create cluster \
 			--name mcu \
+			--ClusterControlPlaneSecurityGroup sg-04ebd0c7c098557d1\
 			--version 1.14 \
 			--region us-east-2 \
 			--nodegroup-name standard-workers \
 			--nodeImageId ami-080fbb09ee2d4d3fa \
 			--node-type t2.micro \
-			--role-arn arn:aws:iam::322886847718:role/eks \
-			--resources-vpc-config subnetIds=subnet-076514427d9f7655d,subnet-0514b9a5e9d47840f,subnet-0489962ecb83961dc,securityGroupIds=sg-04ebd0c7c098557d1 \
 			--keyname capstone \
 			--VpcId vpc-0ecbd4a94757c33e6 \
 			--nodes 2 \
@@ -59,7 +58,7 @@ pipeline {
 	    steps {
 		withAWS(credentials: 'aws-kubectl', region: 'us-east-2') {
 		    sh 'echo "Configure kubectl..."'
-		    sh 'aws eks --region us-east-2 update-kubeconfig --name mcu' 
+		    sh 'aws eks --region us-east-2 --role-arn arn:aws:iam::322886847718:role/eks --resources-vpc-config subnetIds=subnet-076514427d9f7655d,subnet-0514b9a5e9d47840f,subnet-0489962ecb83961dc,securityGroupIds=sg-04ebd0c7c098557d1 update-kubeconfig --name mcu' 
 		}
 	    }
         }
