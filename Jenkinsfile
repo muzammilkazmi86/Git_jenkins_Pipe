@@ -28,10 +28,10 @@ pipeline {
 		}
             }
         }
-	 
+	    
 	stage('Create kubernetes cluster') {
 	    steps {
-		withAWS(credentials: 'aws-kubectl', region: 'us-east-2a') {
+		withAWS(credentials: 'aws-kubectl', region: 'us-east-2') {
 		    sh 'echo "Create kubernetes cluster..."'
 		    sh '''
 			eksctl create cluster \
@@ -39,13 +39,17 @@ pipeline {
 			--version 1.14 \
 			--region us-east-2 \
 			--nodegroup-name standard-workers \
+			--nodeImageId ami-080fbb09ee2d4d3fa \
 			--node-type t2.micro \
+			--role-arn arn:aws:iam::322886847718:role/eks \
+			--resources-vpc-config subnetIds=subnet-076514427d9f7655d,subnet-0514b9a5e9d47840f,subnet-0489962ecb83961dc,securityGroupIds=sg-04ebd0c7c098557d1 \
+			--keyname capstone \
+			--VpcId vpc-0ecbd4a94757c33e6 \
 			--nodes 2 \
 			--nodes-min 1 \
 			--nodes-max 3 \
 			--managed
-			--role-arn arn:aws:iam::322886847718:role/eks
-			--resources-vpc-config subnetIds=subnet-076514427d9f7655d,subnet-0514b9a5e9d47840f,subnet-0489962ecb83961dc,securityGroupIds=sg-04ebd0c7c098557d1
+		
 		'''
 		}
 	    }
@@ -53,7 +57,7 @@ pipeline {
 	    
 	stage('Configure kubectl') {
 	    steps {
-		withAWS(credentials: 'aws-kubectl', region: 'us-east-2a') {
+		withAWS(credentials: 'aws-kubectl', region: 'us-east-2') {
 		    sh 'echo "Configure kubectl..."'
 		    sh 'aws eks --region us-east-2 update-kubeconfig --name mcu' 
 		}
@@ -62,7 +66,7 @@ pipeline {
 
 	stage('Deploy blue container') {
 	    steps {
-		withAWS(credentials: 'aws-kubectl', region: 'us-east-2a') {
+		withAWS(credentials: 'aws-kubectl', region: 'us-east-2') {
 		    sh 'echo "Deploy blue container..."'
 		    sh 'kubectl apply -f ./Blue/blue.yaml'
 		}
@@ -71,7 +75,7 @@ pipeline {
 	    
 	stage('Deploy green container') {
 	    steps {
-		withAWS(credentials: 'aws-kubectl', region: 'us-east-2a') {
+		withAWS(credentials: 'aws-kubectl', region: 'us-east-2') {
 		    sh 'echo "Deploy green container..."'
 		    sh 'kubectl apply -f ./Green/green.yaml'
 		}
@@ -80,7 +84,7 @@ pipeline {
 	    
 	stage('Create blue service') {
 	    steps {
-		withAWS(credentials: 'aws-kubectl', region: 'us-east-2a') {
+		withAWS(credentials: 'aws-kubectl', region: 'us-east-2') {
 		    sh 'echo "Create blue service..."'
 		    sh 'kubectl apply -f ./Blue/blue_service.yaml'
 		}
@@ -89,7 +93,7 @@ pipeline {
 	    
 	stage('Update service to green') {
 	    steps {
-		withAWS(credentials: 'aws-kubectl', region: 'us-east-2a') {
+		withAWS(credentials: 'aws-kubectl', region: 'us-east-2') {
 		    sh 'echo "Update service to green..."'
 		    sh 'kubectl apply -f ./Green/green_service.yaml'
 		}
