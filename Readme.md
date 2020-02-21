@@ -48,7 +48,8 @@
 4. Configure Docker credentials. Since we are using ID dockerhub, configure the credentials accordingly. (Ensure credentials plugin is installed in jenkins)
 5. Configure AWS credentials within Jenkins
 6. Configure blueocean to connect to Github. 
-## Checking if linting is working.
+## Lint Check:
+To verify linting, change the html code purposely and run the pipeline thru. Failure will look somewhat similar to the screenshot below:
 ![Linting check](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/verifylinting.png)
 
 ## Pipeline result once the run is successful.
@@ -60,5 +61,46 @@ This folder shares logs from different steps in the pipeline.
 Below shows successful cluster deployment:
 ![Cloudformation Result](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/mcuclustercloudformation.png)
 ![Cluster Result](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/mcuclusterdeployment.png)
+
+## Bonus Tip (Checking your cluster from the EC2 Node running Jenkins):
+1. Create a kubectl configuration file in your ~/.kube directory as ~/.kube/config-eks:
+    mkdir ~/.kube
+    touch ~/.kube/config-eks
+2. Add the file to the $KUBECONFIG environment variable so that kubectl is able to find it:
+    export KUBECONFIG=~/.kube/config-eks
+3. Fill the file with the following contents, replacing the placeholders shown as follows:
+```sh
+        apiVersion: v1
+    clusters:
+    - cluster:
+        server: API-SERVER-ENDPOINT
+        certificate-authority-data: CA-DATA
+      name: kubernetes
+    contexts:
+    - context:
+        cluster: kubernetes
+        user: aws
+      name: aws
+    current-context: aws
+    kind: Config
+    preferences: {}
+    users:
+    - name: aws
+      user:
+        exec:
+          apiVersion: client.authentication.k8s.io/v1alpha1
+          command: heptio-authenticator-aws
+          args:
+            - "token"
+            - "-i"
+            - "CLUSTER-NAME"
+          env:
+            - name: AWS_PROFILE
+              value: "PROFILE-NAME"
+```
+#### Replace API-SERVER-ENDPOINT: API server endpoint obtained from the cluster.
+#### Replace CA-DATA: certificate authority data obtained from the cluster.
+#### Replace CLUSTER-NAME: name of AWS EKS cluster.
+#### Replace PROFILE-NAME: AWS credentials profile from the ~/.aws/credentials file (typically, default).
 
 
