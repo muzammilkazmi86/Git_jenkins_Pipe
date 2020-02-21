@@ -41,10 +41,11 @@ pipeline {
 			--nodegroup-name standard-workers \
 			--nodeImageId ami-080fbb09ee2d4d3fa \
 			--node-type t2.micro \
-			--keyname capstone \
 			--nodes 2 \
 			--nodes-min 1 \
 			--nodes-max 3 \
+			--ssh-public-key=eksworkshop \
+			--ssh-access=true \
 			--managed
 		
 		'''
