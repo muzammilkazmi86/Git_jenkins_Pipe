@@ -45,6 +45,7 @@ pipeline {
 			--nodes-max 3 \
 			--managed
 			--role-arn arn:aws:iam::322886847718:role/eks
+			--resources-vpc-config subnetIds=subnet-076514427d9f7655d,subnet-0514b9a5e9d47840f,subnet-0489962ecb83961dc,securityGroupIds=sg-04ebd0c7c098557d1
 		'''
 		}
 	    }
