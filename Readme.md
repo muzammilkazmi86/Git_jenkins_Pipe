@@ -50,7 +50,7 @@
 6. Configure blueocean to connect to Github. 
 
 # Pipeline result once the run is successful. (Image PIPELINEFINAL)
-
+![alt text](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/PIPELINEFINAL.png)
 # Sample log folder 
 ## This folder shares logs from different steps showing completion:
  1. 
