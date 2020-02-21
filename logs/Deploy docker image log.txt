@@ -1,0 +1,12 @@
++ echo Deploying Docker Image...
+Deploying Docker Image...
++ docker build -t ****/capstone .
+Sending build context to Docker daemon  117.8kB
+
+Step 1/2 : FROM nginx
+ ---> 2073e0bcb60e
+Step 2/2 : COPY index.html /usr/share/nginx/html
+ ---> Using cache
+ ---> 490673d55b07
+Successfully built 490673d55b07
+Successfully tagged ****/capstone:latest

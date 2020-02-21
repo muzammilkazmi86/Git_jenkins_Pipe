@@ -1,0 +1,20 @@
++ echo Image push for Docker Image...
+Image push for Docker Image...
++ docker login -u **** -p ****
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/lib/jenkins/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker push ****/capstone
+The push refers to repository [docker.io/****/capstone]
+906fe8b74ae6: Preparing
+22439467ad99: Preparing
+b4a29beac87c: Preparing
+488dfecc21b1: Preparing
+22439467ad99: Layer already exists
+906fe8b74ae6: Layer already exists
+488dfecc21b1: Layer already exists
+b4a29beac87c: Layer already exists
+latest: digest: sha256:babc333572297a94712bbb0b509b36cd626b3e51ed8d591a1f0f16c1ba2e7b34 size: 1155
