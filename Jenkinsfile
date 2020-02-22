@@ -39,7 +39,7 @@ pipeline {
 			--version 1.14 \
 			--region us-east-2 \
 			--nodegroup-name standard-workers \
-			--nodeImageId ami-080fbb09ee2d4d3fa \
+			--nodeImageId0 \
 			--node-type t2.micro \
 			--nodes 2 \
 			--nodes-min 1 \
