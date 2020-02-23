@@ -13,6 +13,6 @@ spec:
     spec:
       containers:
         - name: blue
-          image: muzammilkazmi86/greenblue
+          image: muzammilkazmi86/capstone
           ports:
             - containerPort: 80
