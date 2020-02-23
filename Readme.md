@@ -74,7 +74,11 @@ Below shows successful cluster deployment:
 ![Cloudformation Result](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/mcuclustercloudformation.png)
 ![Cluster Result](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/mcuclusterdeployment.png)
 
-## 10. Bonus Tip (Checking your cluster from the EC2 Node running Jenkins):
+## 10. Website result:
+![Website Result](https://github.com/muzammilkazmi86/Capstone_Udacity/blob/master/image/webpage%20result.png)
+
+
+## 11. Bonus Tip (Checking your cluster from the EC2 Node running Jenkins):
 1. Create a kubectl configuration file in your ~/.kube directory as ~/.kube/config-eks:
     mkdir ~/.kube
     touch ~/.kube/config-eks
