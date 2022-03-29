@@ -1,4 +1,4 @@
-# Capstone Udacity Project
+# Sample Project
 
 ## 1. Project Flow:
 1. Lauch a EC2 instance (Ubuntu).
